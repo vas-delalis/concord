@@ -34,7 +34,7 @@ Each activity will have certain attributes which will determine the users that w
 - Experience (Depending on if the group requires experienced members or is open to beginners)
 - Monetary contribution per person (In case that the activity requires an entry fee)
 - Maximum number of people needed (Specifying how large the group can be depending on the activity)
-- Required/Provided Equipment (Weather users have to bring their own )
+- Required/Provided Equipment (Whether users have to bring their own )
 
 ### User Profile
 
