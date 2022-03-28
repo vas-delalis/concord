@@ -32,6 +32,7 @@ Each activity will have certain attributes which will determine the users that w
 - Age (Either as a limit or a range)
 - Location (For activities which require physical presense of the users)
 - Experience (Depending on if the group requires experienced members or is open to beginners)
+<<<<<<< HEAD
 - Monetary contribution per person (In case that the event requires an entry fee)
 - Maximum number of people needed (Specifying how large the group can be depending on the event)
 - Required/Provided Equipment (Weather users have to bring their own)
@@ -39,6 +40,11 @@ Each activity will have certain attributes which will determine the users that w
 ### Lobbies
 
 A user can at any time create a new lobby to host an event. The lobby creation process will be initiated via a button on the main screen. Once pressed, the user will be presented with a lobby creation screen. From there the user will have to input a title, a planned date and time for the event, as well as the desired activity that will take place. The activity will be selected from a predetermined list, including officially supported activities, verified community activities and custom activities. After selection, the system will provide the lobby creator with a list of default attributes that are critical to said activity, which they will have to fill in in order to provide the matching algorithm with information regarding the requirements to join the lobby. Optionally, the lobby creator will be able to include a small description of the event that potential members will be able to quickly check, and add or remove attributes that are not required by the system for the activity. After the lobby is created, an instance will be created in the system and it will be kept alive until the events conclusion plus a set ammount of time. The lobby creator will have access to the lobby management screen, from which they can alter the attributes they set during creation, the time/date of the event, manage entry applications (if applicable), view and manage lobby members, create announcements/notifications, set reminders, change the title/description of the event, have access to the looby's chat and get an invite link for the lobby. Lobby members will have access to the chat, will be able to get the lobby's invite link to forward it to friends, will recieve notifications whenever the lobby creator makes a new announcement and will also have access to a button to leave the lobby.
+=======
+- Monetary contribution per person (In case that the activity requires an entry fee)
+- Maximum number of people needed (Specifying how large the group can be depending on the activity)
+- Required/Provided Equipment (Whether users have to bring their own)
+>>>>>>> 0c09c18b433a5bd10e9c3fe68a46e1e6efba0834
 
 ### User Profile
 
