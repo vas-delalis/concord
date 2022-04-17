@@ -1,8 +1,11 @@
 import { useRoutes, Navigate, Outlet } from 'react-router-dom';
 import { Landing, Home, NotFound } from 'features/misc';
+import { MainLayout } from 'components/layout';
 
 const App = () => (
-  <Outlet></Outlet>
+  <MainLayout>
+    <Outlet></Outlet>
+  </MainLayout>
 )
 
 export const AppRoutes = () => {
