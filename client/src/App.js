@@ -1,14 +1,10 @@
-import styled from 'styled-components';
-
-const StyledApp = styled.div`
-  min-height: 100vh;
-  display: flex;
-`
+import { BrowserRouter } from 'react-router-dom';
+import { AppRoutes } from 'routes';
 
 const App = () => (
-  <StyledApp>
-    Hello world
-  </StyledApp>
+  <BrowserRouter>
+    <AppRoutes />
+  </BrowserRouter>
 );
 
 export default App;
