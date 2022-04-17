@@ -18,6 +18,7 @@
   --gray-200: hsla(244, 20%, 90%, 1);
   --gray-100: hsla(244, 16%, 98%, 1);
   --red: hsla(0, 59%, 54%, 1);
+  --shadow-double: 0px 1px 2px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);;
 }
 
 body {
@@ -25,4 +26,9 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  border: none;
+  font-family: inherit;
 }
