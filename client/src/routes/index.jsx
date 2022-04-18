@@ -1,6 +1,7 @@
 import { useRoutes, Navigate, Outlet } from 'react-router-dom';
 import { Landing, Home, NotFound } from 'features/misc';
 import { MainLayout } from 'components/layout';
+import { Groups } from 'features/groups';
 
 const App = () => (
   <MainLayout>
@@ -17,7 +18,7 @@ export const AppRoutes = () => {
       element: <App />,
       children: [
         { path: '', element: <Home /> },       
-        { path: 'groups', element: null },
+        { path: 'groups', element: <Groups /> },
         { path: 'lfg', element: null },
         { path: 'search', element: null },
         { path: 'inbox', element: null },
