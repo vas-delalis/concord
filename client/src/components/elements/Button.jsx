@@ -13,9 +13,9 @@ const variants = {
 }
 
 const widths = {
-  small: 'padding: 8px 16px;',
-  large: 'padding: 8px 32px;',
-  full:  `padding: 8px 16px;
+  small: 'padding: 12px 16px;',
+  large: 'padding: 12px 32px;',
+  full:  `padding: 12px 16px;
           width: 100%;`
 }
 

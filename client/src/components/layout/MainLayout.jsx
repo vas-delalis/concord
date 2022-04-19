@@ -16,14 +16,16 @@ import {
 const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 `
 
 const Main = styled.main`
-  flex-grow: 1;
 `
 
 const Nav = styled.nav`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   border-top: 1px solid var(--gray-200);
   height: 50px;
   display: flex;
