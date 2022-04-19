@@ -24,6 +24,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 body {
@@ -35,7 +36,6 @@ body {
 
 button {
   border: none;
-  font-family: inherit;
 }
 
 a {

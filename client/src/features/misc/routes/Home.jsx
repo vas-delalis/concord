@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {
   SearchIcon,
-} from '@heroicons/react/outline';
+} from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 import { useDisclosure } from 'hooks/useDisclosure';
 import { Button } from 'components/elements';
@@ -30,7 +30,7 @@ const SearchButton = styled.button`
 `
 
 const StyledSearchIcon = styled(SearchIcon)`
-  width: 16px;
+  width: 18px;
   margin-right: 4px;
 `
 
