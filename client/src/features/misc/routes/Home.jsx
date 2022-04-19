@@ -18,7 +18,7 @@ const Hero = styled.section`
 const SearchButton = styled.button`
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 100px;
-  height: 40px;
+  height: 48px;
   width: 100%;
   box-shadow: var(--shadow-double);
   font-weight: 500;
@@ -31,7 +31,7 @@ const SearchButton = styled.button`
 
 const StyledSearchIcon = styled(SearchIcon)`
   width: 18px;
-  margin-right: 4px;
+  margin-right: 6px;
 `
 
 const LFGLink = styled(Link)`

@@ -27,7 +27,7 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   border-top: 1px solid var(--gray-200);
-  height: 50px;
+  height: 60px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

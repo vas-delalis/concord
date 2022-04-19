@@ -19,7 +19,7 @@
   --gray-100: hsla(244, 16%, 98%, 1);
   --red: hsla(0, 59%, 54%, 1);
   --shadow-double: 0px 1px 2px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  --modal-background: hsla(244, 30%, 12%, 0.5);
+  --modal-background: hsla(244, 30%, 12%, 0.75);
 }
 
 * {
