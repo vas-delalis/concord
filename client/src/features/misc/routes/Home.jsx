@@ -34,16 +34,7 @@ const StyledSearchIcon = styled(SearchIcon)`
 `
 
 const LFGLink = styled(Link)`
-  margin-top: 32px;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.25);
-  color: white;
-  height: 35px;
-  padding: 0px 16px;
-  font-weight: 400;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
+  margin-top: 32px; 
 `
 
 export const Home = () => {
@@ -60,7 +51,11 @@ export const Home = () => {
           <StyledSearchIcon />
           What would you like to do?
         </SearchButton>
-        <LFGLink to="lfg">I'm feeling lucky</LFGLink>
+        <LFGLink to="lfg">
+          <Button variant="transparent" width="small">
+            I'm feeling lucky
+          </Button>
+        </LFGLink>
       </Hero>
     </>
   )

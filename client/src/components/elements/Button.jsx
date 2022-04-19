@@ -7,6 +7,9 @@ const variants = {
             &:active {
               background-color: var(--primary-400);
             }`,
+  transparent: `background-color: rgba(255, 255, 255, 0.25);
+                color: white;
+                font-weight: 400;`
 }
 
 const widths = {
@@ -17,6 +20,9 @@ const widths = {
 }
 
 const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   font-size: 16px;
   transition: background-color 0.2s;
