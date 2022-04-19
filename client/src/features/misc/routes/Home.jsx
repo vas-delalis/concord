@@ -4,7 +4,7 @@ import {
 } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
 import { useDisclosure } from 'hooks/useDisclosure';
-import { Modal } from 'components/elements';
+import { Modal, Button } from 'components/elements';
 
 const Hero = styled.section`
   background: linear-gradient(90deg, var(--primary-500) 0%, hsl(255, 70%, 70%) 100%);
@@ -50,7 +50,11 @@ export const Home = () => {
   const { open, close, isOpen } = useDisclosure();
   return (
     <>
-      <Modal isOpen={isOpen} close={close} />
+      <Modal isOpen={isOpen} close={close}>
+        <Button variant="primary" width="full">
+          Select activity
+        </Button>
+      </Modal>
       <Hero>
         <SearchButton onClick={open}>
           <StyledSearchIcon />
