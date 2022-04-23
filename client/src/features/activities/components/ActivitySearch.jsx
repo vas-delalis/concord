@@ -39,8 +39,11 @@ const ActivityList = styled.div`
 `
 
 const Activity = styled.article`
-  color: var(--gray-900);
   padding: 16px 24px;
+  margin: 2px 0;
+  border-radius: 5px;
+  background-color: ${({ selected }) => selected ? 'var(--primary-200)' : ''};
+  color: ${({ selected }) => selected ? 'var(--primary-900)' : 'var(--gray-900)'};
 `
 
 export const ActivitySearch = ({ isOpen, close }) => {
@@ -48,8 +51,21 @@ export const ActivitySearch = ({ isOpen, close }) => {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    setActivities(getActivities(query));
+    setActivities(getActivities(query).map(
+      activity => ({
+        ...activity,
+        selected: false
+      })
+    ));
   }, [query]);
+
+  const toggleActivitySelect = (id) => (
+    setActivities(activities.map(activity => 
+      activity.id === id ? 
+      { ...activity, selected: !activity.selected } :
+      activity
+    ))
+  );
 
   return (<Modal isOpen={isOpen} close={close}>
     <SearchBar>
@@ -58,11 +74,11 @@ export const ActivitySearch = ({ isOpen, close }) => {
     </SearchBar>
     <ActivityList>
       {activities.slice(0, 5).map(activity => (
-        <Activity key={activity}>{activity}</Activity>
+        <Activity key={activity.id} onClick={() => toggleActivitySelect(activity.id)} selected={activity.selected}>{activity.name}</Activity>
       ))}
     </ActivityList>
 
-    <Button variant="primary" width="full">
+    <Button variant="primary" width="full" disabled={activities.filter(a => a.selected).length === 0}>
       See groups
     </Button>
   </Modal>)

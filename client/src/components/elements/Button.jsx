@@ -4,7 +4,12 @@ const variants = {
   primary: `background-color: var(--primary-500);
             color: white;
             box-shadow: var(--shadow-double);
-            &:active {
+
+            &:disabled {
+              background-color: var(--gray-500);
+            }
+
+            &:enabled:active {
               background-color: var(--primary-400);
             }`,
   transparent: `background-color: rgba(255, 255, 255, 0.25);
@@ -27,13 +32,13 @@ const StyledButton = styled.button`
   font-size: 16px;
   transition: background-color 0.2s;
 
-  ${({ variant, width }) => {
-    return variants[variant] + widths[width]
-  }}
+  ${({ variant, width }) => (
+    variants[variant] + widths[width]
+  )}
 `
 
-export const Button = ({ children, variant, width }) => (
-  <StyledButton variant={variant} width={width}>
+export const Button = ({ children, variant, width, disabled }) => (
+  <StyledButton variant={variant} width={width} disabled={disabled}>
     { children }
   </StyledButton>
 )
