@@ -21,27 +21,14 @@
   --gray-300: #d8d7e4;
   --gray-200: #eaeaf1;
   --gray-100: #f9f9fb;
-  --red: hsla(0, 59%, 54%, 1);
   --shadow-double: 0px 1px 2px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  --modal-background: hsla(244, 30%, 12%, 0.75);
 }
 
 * {
   box-sizing: border-box;
-  font-family: inherit;
 }
 
 body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-button {
-  border: none;
-}
-
-a {
-  text-decoration: none;
 }

@@ -1,29 +1,16 @@
-import styled from 'styled-components';
-
-const Background = styled.div`
-  display: ${ ({ isOpen }) => isOpen ? 'flex' : 'none' };
-  min-height: 100%;
-  width: 100%;
-  background-color: var(--modal-background);
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-`
-
-const Dialog = styled.div`
-  width: calc(100% - 32px);
-  background-color: white;
-  border-radius: 5px;
-  padding: 16px;
-  box-shadow: 0px 15px 35px 0px rgba(0, 0, 0, 0.15);
-  z-index: 1001;
-`
+import clsx from 'clsx';
 
 export const Modal = ({ isOpen, close, children }) => (
-  <Background isOpen={isOpen} onClick={close} >
-    <Dialog onClick={e => { e.stopPropagation() }}>
+  <div
+    isOpen={isOpen}
+    onClick={close}
+    className={clsx(
+      'absolute z-50 items-center justify-center w-full min-h-full bg-slate-900/60 p-4',
+      isOpen ? 'flex' : 'hidden'
+    )}
+  >
+    <div onClick={e => { e.stopPropagation() }} className='bg-white rounded p-4 shadow-xl w-full'>
       { children }
-    </Dialog>
-  </Background>
+    </div>
+  </div>
 )
