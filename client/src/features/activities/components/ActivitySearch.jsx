@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from "react";
-import { SearchIcon } from '@heroicons/react/solid';
+import { SearchIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { Modal, Button } from "components/elements";
 import { getActivities } from "../api/getActivities";
 
@@ -33,17 +33,32 @@ const SearchBar = styled.div`
   }
 `
 
+const Flexible = styled.div`
+  background-color: var(--primary-200);
+  font-weight: 500;
+  color: var(--primary-900);
+  border-radius: 5px;
+  padding: 8px 8px 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Chevron = styled(ChevronRightIcon)`
+  height: 28px;
+`
+
 const ActivityList = styled.div`
   height: 280px;
-  margin-bottom: 16px;
+  margin: 16px 0;
 `
 
 const Activity = styled.article`
   padding: 16px 24px;
   margin: 2px 0;
   border-radius: 5px;
-  background-color: ${({ selected }) => selected ? 'var(--primary-200)' : ''};
-  color: ${({ selected }) => selected ? 'var(--primary-900)' : 'var(--gray-900)'};
+  background-color: ${({ selected }) => selected ? 'var(--gray-200)' : ''};
+  color: ${({ selected }) => selected ? 'var(--gray-900)' : 'var(--gray-900)'};
 `
 
 export const ActivitySearch = ({ isOpen, close }) => {
@@ -72,6 +87,10 @@ export const ActivitySearch = ({ isOpen, close }) => {
       <SearchIcon />
       <input type="text" placeholder="Search activities" spellCheck="false" value={query} onChange={e => setQuery(e.target.value)} />
     </SearchBar>
+    <Flexible>
+      I'm flexible
+      <Chevron></Chevron>
+    </Flexible>
     <ActivityList>
       {activities.slice(0, 5).map(activity => (
         <Activity key={activity.id} onClick={() => toggleActivitySelect(activity.id)} selected={activity.selected}>{activity.name}</Activity>
