@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 import {
   SearchIcon,
 } from '@heroicons/react/solid';
@@ -7,54 +7,30 @@ import { useDisclosure } from 'hooks/useDisclosure';
 import { Button } from 'components/elements';
 import { ActivitySearch } from 'features/activities';
 
-const Hero = styled.section`
-  background: linear-gradient(90deg, var(--primary-500) 0%, hsl(255, 70%, 70%) 100%);
-  padding: 48px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const SearchButton = styled.button`
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 100px;
-  height: 48px;
-  width: 100%;
-  box-shadow: var(--shadow-double);
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--primary-800);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const StyledSearchIcon = styled(SearchIcon)`
-  width: 18px;
-  margin-right: 6px;
-`
-
-const LFGLink = styled(Link)`
-  margin-top: 32px; 
-`
-
 export const Home = () => {
   const { open, close, isOpen } = useDisclosure();
 
   return (
     <>
       <ActivitySearch isOpen={isOpen} close={close} />
-      <Hero>
-        <SearchButton onClick={open}>
-          <StyledSearchIcon />
+      <section className='flex flex-col items-center px-8 py-12 bg-gradient-to-r from-primary-500 to-violet-400'>
+        <button
+          onClick={open}
+          className={clsx(
+            'flex items-center justify-center',
+            'bg-white/90 w-full rounded-full h-12',
+            'shadow text-primary-800 font-medium'
+          )}
+        >
+          <SearchIcon className='w-5 mr-1.5' />
           What would you like to do?
-        </SearchButton>
-        <LFGLink to="lfg">
+        </button>
+        <Link to="lfg" className='mt-8'>
           <Button variant="transparent" size="medium">
             I'm feeling lucky
           </Button>
-        </LFGLink>
-      </Hero>
+        </Link>
+      </section>
     </>
   )
 }
