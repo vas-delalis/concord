@@ -97,7 +97,7 @@ export const ActivitySearch = ({ isOpen, close }) => {
       ))}
     </ActivityList>
 
-    <Button variant="primary" width="full" disabled={activities.filter(a => a.selected).length === 0}>
+    <Button variant="primary" size="full" disabled={activities.filter(a => a.selected).length === 0}>
       See groups
     </Button>
   </Modal>)

@@ -50,7 +50,7 @@ export const Home = () => {
           What would you like to do?
         </SearchButton>
         <LFGLink to="lfg">
-          <Button variant="transparent" width="small">
+          <Button variant="transparent" size="medium">
             I'm feeling lucky
           </Button>
         </LFGLink>
