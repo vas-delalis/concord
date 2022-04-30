@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SearchIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { Modal, Button } from "components/elements";
 import { getActivities } from "../api/getActivities";
@@ -87,10 +88,12 @@ export const ActivitySearch = ({ isOpen, close }) => {
       <SearchIcon />
       <input type="text" placeholder="Search activities" spellCheck="false" value={query} onChange={e => setQuery(e.target.value)} />
     </SearchBar>
-    <Flexible>
-      I'm flexible
-      <Chevron></Chevron>
-    </Flexible>
+    <Link to='groups'>
+      <Flexible>
+        I'm flexible
+        <Chevron />
+      </Flexible>
+    </Link>
     <ActivityList>
       {activities.slice(0, 5).map(activity => (
         <Activity key={activity.id} onClick={() => toggleActivitySelect(activity.id)} selected={activity.selected}>{activity.name}</Activity>
