@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
 import {
   HomeIcon,
@@ -13,54 +12,28 @@ import {
   UserCircleIcon as SolidUserCircleIcon
 } from '@heroicons/react/solid';
 
-const StyledLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Main = styled.main`
-`
-
-const Nav = styled.nav`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-top: 1px solid var(--gray-200);
-  height: 60px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-`
-
-const StyledNavLink = styled(NavLink)`
-  svg {
-    width: 24px;
-  }
-
-  color: var(--gray-700);
-
-  &.active {
-    color: var(--gray-800);
-  }   
-`
-
-const Link = ({ to, iconOutline, iconSolid, end=false }) => (
-  <StyledNavLink to={to} end={end}>
-    {({ isActive }) => isActive ? iconSolid.render() : iconOutline.render() }
-  </StyledNavLink>
-);
+const Link = ({ to, IconInactive, IconActive, end=false }) => {
+  return (
+    <NavLink to={to} end={end}>
+      {({ isActive }) => isActive ? (
+        <IconActive className='w-6 text-slate-800' />
+      ) : (
+        <IconInactive className='w-6 text-slate-500' />
+      )}
+    </NavLink>
+  )
+};
 
 export const MainLayout = ({ children }) => (
-  <StyledLayout>
-    <Main>
+  <>
+    <main>
       {children}
-    </Main>
-    <Nav>
-      <Link to="/app" iconOutline={HomeIcon} iconSolid={SolidHomeIcon} end />
-      <Link to="/app/search" iconOutline={SearchIcon} iconSolid={SolidSearchIcon} />
-      <Link to="/app/inbox" iconOutline={ChatAltIcon} iconSolid={SolidChatAltIcon} />
-      <Link to="/app/profile" iconOutline={UserCircleIcon} iconSolid={SolidUserCircleIcon} />
-    </Nav>
-  </StyledLayout>
+    </main>
+    <nav className='fixed bottom-0 left-0 right-0 flex justify-evenly items-center h-14 border-t border-slate-300'>
+      <Link to="/app" IconInactive={HomeIcon} IconActive={SolidHomeIcon} end />
+      <Link to="/app/search" IconInactive={SearchIcon} IconActive={SolidSearchIcon} />
+      <Link to="/app/inbox" IconInactive={ChatAltIcon} IconActive={SolidChatAltIcon} />
+      <Link to="/app/profile" IconInactive={UserCircleIcon} IconActive={SolidUserCircleIcon} />
+    </nav>
+  </>
 );
