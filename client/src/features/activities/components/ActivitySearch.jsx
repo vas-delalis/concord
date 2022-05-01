@@ -40,11 +40,17 @@ const ActivityList = ({ activities, toggleActivitySelect }) => (
 export const ActivitySearch = ({ isOpen, close }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activities, setActivities] = useState([]);
-  const { isLoading, isError, data } = useQuery(
+  const { data } = useQuery(
     ['activities', searchQuery],
     () => getActivities(searchQuery)
   );
   const [, setFilters] = useOutletContext();
+
+  const setActivityFilter = () => {
+    setFilters({
+      activities: activities.filter(activity => activity.selected)
+    });
+  };
 
   useEffect(() => {
     // The intended behaviour is this:
@@ -75,12 +81,6 @@ export const ActivitySearch = ({ isOpen, close }) => {
     ]});
   }, [data]);
 
-  useEffect(() => {
-    setFilters({
-      activities: activities.filter(activity => activity.selected)
-    });
-  }, [activities, setFilters])
-
   const toggleActivitySelect = (id) => {
     setActivities(oldActivities => 
       oldActivities.map(activity => 
@@ -105,9 +105,15 @@ export const ActivitySearch = ({ isOpen, close }) => {
         <ChevronRightIcon className='h-7' />
       </Link>
       <ActivityList activities={activities} toggleActivitySelect={toggleActivitySelect} />
-      <Button variant="primary" size="full" disabled={activities.filter(a => a.selected).length === 0}>
-        See groups
-      </Button>
+      <Link to='groups' onClick={setActivityFilter}>
+        <Button
+          variant="primary"
+          size="full" 
+          disabled={activities.filter(a => a.selected).length === 0}
+        >
+          See groups
+        </Button>
+      </Link>
     </Modal>
   )
 };
