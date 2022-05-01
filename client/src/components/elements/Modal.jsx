@@ -4,7 +4,7 @@ export const Modal = ({ isOpen, close, children }) => (
   <div
     onClick={close}
     className={clsx(
-      'absolute z-50 items-center justify-center w-full min-h-full bg-slate-900/60 p-4',
+      'absolute z-50 items-center justify-center w-full min-h-full bg-gray-900/60 p-4',
       isOpen ? 'flex' : 'hidden'
     )}
   >

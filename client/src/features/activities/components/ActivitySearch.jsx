@@ -29,15 +29,15 @@ export const ActivitySearch = ({ isOpen, close }) => {
 
   return (
     <Modal isOpen={isOpen} close={close}>
-      <div className='flex items-center pl-3 mb-4 border-b-2 border-slate-400'>
-        <SearchIcon className='h-6 text-slate-500' />
+      <div className='flex items-center pl-3 mb-4 border-b-2 border-gray-400'>
+        <SearchIcon className='h-6 text-gray-500' />
         <input
           type="text"
           placeholder="Search activities"
           spellCheck="false"
           value={query}
           onChange={e => setQuery(e.target.value)}
-          className='p-3 w-full text-slate-700 placeholder:text-slate-400 focus:outline-none'
+          className='p-3 w-full text-gray-700 placeholder:text-gray-400 focus:outline-none'
         />
       </div>
       <Link
@@ -57,7 +57,7 @@ export const ActivitySearch = ({ isOpen, close }) => {
             onClick={() => toggleActivitySelect(activity.id)}
             className={clsx(
               'px-6 py-4 rounded',
-              {'bg-slate-200': activity.selected},
+              {'bg-gray-200': activity.selected},
             )}
           >
             {activity.name}
