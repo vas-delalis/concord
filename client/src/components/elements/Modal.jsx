@@ -2,7 +2,6 @@ import clsx from 'clsx';
 
 export const Modal = ({ isOpen, close, children }) => (
   <div
-    isOpen={isOpen}
     onClick={close}
     className={clsx(
       'absolute z-50 items-center justify-center w-full min-h-full bg-slate-900/60 p-4',
