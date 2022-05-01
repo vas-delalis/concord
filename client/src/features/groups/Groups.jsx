@@ -1,14 +1,13 @@
-import { useSearchParams } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import { PlusSmIcon } from '@heroicons/react/solid';
 import { Button } from 'components/elements';
 
 export const Groups = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.getAll('activity'));
+  const [filters, setFilters] = useOutletContext();
 
   return (
     <div className='bg-gradient-to-r from-primary-500 to-violet-400 text-white flex justify-between items-center p-4'>
-      Overwatch
+      { filters.activities.length > 0 ? filters.activities.map(a => a.name).join(', ') : 'All activities' }
       <Button variant='white' className='py-0.5 pl-3 pr-4'>
         <PlusSmIcon className='w-6' />
         Create

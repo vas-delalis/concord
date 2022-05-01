@@ -1,13 +1,20 @@
+import { useState } from 'react';
 import { useRoutes, Navigate, Outlet } from 'react-router-dom';
 import { Landing, Home, NotFound } from 'features/misc';
 import { MainLayout } from 'components/layout';
 import { Groups } from 'features/groups';
 
-const App = () => (
-  <MainLayout>
-    <Outlet></Outlet>
-  </MainLayout>
-)
+const App = () => {
+  const [filters, setFilters] = useState({
+    activities: [],
+  });
+
+  return (
+    <MainLayout>
+      <Outlet context={[filters, setFilters]}></Outlet>
+    </MainLayout>
+  )
+}
 
 export const AppRoutes = () => {
   const routes = useRoutes([

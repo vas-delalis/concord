@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useState, useEffect } from "react";
 import { useQuery } from 'react-query';
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { SearchIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { Modal, Button } from "components/elements";
 import { getActivities } from "../api/getActivities";
@@ -39,12 +39,12 @@ const ActivityList = ({ activities, toggleActivitySelect }) => (
 
 export const ActivitySearch = ({ isOpen, close }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [activities, setActivities] = useState([]);
   const { isLoading, isError, data } = useQuery(
     ['activities', searchQuery],
     () => getActivities(searchQuery)
   );
-  const [activities, setActivities] = useState([]);
-
+  const [, setFilters] = useOutletContext();
 
   useEffect(() => {
     // The intended behaviour is this:
@@ -73,16 +73,23 @@ export const ActivitySearch = ({ isOpen, close }) => {
         )
       ) // Newly fetched activities that weren't previously selected
     ]});
-
   }, [data]);
 
-  const toggleActivitySelect = (id) => (
-    setActivities(activities.map(activity => 
-      activity.id === id ? 
-      { ...activity, selected: !activity.selected } :
-      activity
-    ))
-  );
+  useEffect(() => {
+    setFilters({
+      activities: activities.filter(activity => activity.selected)
+    });
+  }, [activities, setFilters])
+
+  const toggleActivitySelect = (id) => {
+    setActivities(oldActivities => 
+      oldActivities.map(activity => 
+        activity.id === id ? 
+        { ...activity, selected: !activity.selected } :
+        activity
+      )
+    );
+  };
 
   return (
     <Modal isOpen={isOpen} close={close}>
