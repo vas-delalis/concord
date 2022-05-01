@@ -1,4 +1,4 @@
-export const getActivities = (query) => {
+export const getActivities = async (query) => {
   const activities = [
     { id: 0, name: 'Overwatch' },
     { id: 1, name: 'Counter-Strike: Global Offensive' },
@@ -8,6 +8,5 @@ export const getActivities = (query) => {
     { id: 5, name: 'Call of Duty: Warzone' },
   ];
 
-  return activities
-    .filter(activity => activity.name.startsWith(query));
+  return activities.filter(activity => activity.name.startsWith(query));
 };

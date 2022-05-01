@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useState, useEffect } from "react";
+import { useQuery } from 'react-query';
 import { Link } from "react-router-dom";
 import { SearchIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { Modal, Button } from "components/elements";
@@ -20,7 +21,7 @@ const Search = ({ query, setQuery }) => (
 );
 
 const ActivityList = ({ activities, toggleActivitySelect }) => (
-  <ul className='py-4 space-y-0.5'>
+  <ul className='py-4 space-y-0.5 h-80'>
     {activities.slice(0, 5).map(activity => (
       <article
         key={activity.id}
@@ -37,18 +38,43 @@ const ActivityList = ({ activities, toggleActivitySelect }) => (
 );
 
 export const ActivitySearch = ({ isOpen, close }) => {
-  const [query, setQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const { isLoading, isError, data } = useQuery(
+    ['activities', searchQuery],
+    () => getActivities(searchQuery)
+  );
   const [activities, setActivities] = useState([]);
 
-  // When query changes, get activities matching query from API
+
   useEffect(() => {
-    setActivities(getActivities(query).map(
+    // The intended behaviour is this:
+    // When an activity is selected, it stays where it is. However, when the search query is then changed,
+    // selected activities stick around (even if they don't match the search query) and move to the top.
+    if (!data) {
+      return
+    };
+
+    const fetched = data.map(
       activity => ({
         ...activity,
         selected: false
       })
-    ));
-  }, [query]);
+    );
+    
+    // We use the functional form of setState in order to avoid 'activities' as a dependency,
+    // which would make activities move to the top immediately upon selection
+    setActivities(oldActivities => {
+      const selected = oldActivities.filter(a => a.selected);
+      return [
+      ...selected, // Previously selected activities
+      ...fetched.filter(fetchedActivity =>
+        !selected.some(selectedActivity => 
+          selectedActivity.id === fetchedActivity.id
+        )
+      ) // Newly fetched activities that weren't previously selected
+    ]});
+
+  }, [data]);
 
   const toggleActivitySelect = (id) => (
     setActivities(activities.map(activity => 
@@ -60,7 +86,7 @@ export const ActivitySearch = ({ isOpen, close }) => {
 
   return (
     <Modal isOpen={isOpen} close={close}>
-      <Search query={query} setQuery={setQuery} />
+      <Search query={searchQuery} setQuery={setSearchQuery} />
       <Link
         to='groups'
         className={clsx(
