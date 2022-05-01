@@ -9,10 +9,10 @@ export const Groups = () => {
   return (
     <div className='bg-gradient-to-r from-primary-500 to-violet-400 text-white flex justify-between items-center p-4'>
       Overwatch
-      <button className='flex items-center bg-white text-primary-600 font-medium text-lg rounded py-0.5 pl-3 pr-4 shadow'>
+      <Button variant='white' className='py-0.5 pl-3 pr-4'>
         <PlusSmIcon className='w-6' />
         Create
-      </button>
+      </Button>
     </div>
   );
 };

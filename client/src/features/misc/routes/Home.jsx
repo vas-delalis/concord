@@ -26,7 +26,7 @@ export const Home = () => {
           What would you like to do?
         </button>
         <Link to="lfg" className='mt-8'>
-          <Button variant="transparent" size="medium">
+          <Button variant="transparent" size="small">
             I'm feeling lucky
           </Button>
         </Link>

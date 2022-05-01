@@ -1,49 +1,28 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 const variants = {
-  primary: `background-color: var(--primary-500);
-            color: white;
-            box-shadow: var(--shadow-double);
-
-            &:disabled {
-              background-color: var(--gray-500);
-            }
-
-            &:enabled:active {
-              background-color: var(--primary-400);
-            }`,
-  transparent: `background-color: rgba(255, 255, 255, 0.25);
-                color: white;
-                font-weight: 400;`,
-  white: `background-color: white;
-          color: var(--primary-600);
-          font-weight: 500;
-          box-shadow: var(--shadow-double);`
-}
+  primary: 'bg-primary-500 text-white shadow disabled:bg-gray-400',
+  transparent: 'bg-white/25 text-white',
+  white: 'bg-white text-primary-600 font-medium text-lg shadow'
+};
 
 const sizes = {
-  small:  'padding: 6px 16px;',
-  medium: 'padding: 12px 20px',
-  large:  'padding: 12px 32px;',
-  full:   `padding: 12px 16px;
-           width: 100%;`
-}
+  small:  'px-4 py-2',
+  medium: 'px-5 py-3',
+  large:  'px-8 py-3',
+  full:   'px-4 py-3 w-full'
+};
 
-const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.2s;
-
-  ${({ variant, size }) => (
-    variants[variant] + sizes[size]
-  )}
-`
-
-export const Button = ({ children, variant, size, disabled }) => (
-  <StyledButton variant={variant} size={size} disabled={disabled}>
+export const Button = ({ children, variant, size, disabled, className }) => (
+  <button
+    disabled={disabled}
+    className={clsx(
+      'flex items-center justify-center rounded transition-colors',
+      sizes[size],
+      variants[variant],
+      className
+    )}
+  >
     { children }
-  </StyledButton>
+  </button>
 )
