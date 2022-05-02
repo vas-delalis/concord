@@ -3,6 +3,7 @@ import { PlusSmIcon, ChevronDownIcon } from '@heroicons/react/solid';
 import { Button } from 'components/elements';
 import { useDisclosure } from 'hooks/useDisclosure';
 import { ActivitySelect } from 'features/activities';
+import { GroupList } from './GroupList';
 
 function formatActivityNames(names) {
   switch (names.length) {
@@ -41,6 +42,7 @@ export const Groups = () => {
           Create
         </Button>
       </div>
+      <GroupList filters={filters} />
     </>
   );
 };

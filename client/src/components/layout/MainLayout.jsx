@@ -22,10 +22,10 @@ const Link = ({ to, Icon, end=false }) => {
 
 export const MainLayout = ({ children }) => (
   <>
-    <main>
+    <main className='overflow-auto pb-14'>
       {children}
     </main>
-    <nav className='fixed bottom-0 left-0 right-0 flex justify-evenly items-center h-14 border-t border-gray-300'>
+    <nav className='fixed bottom-0 left-0 right-0 flex justify-evenly items-center h-14 border-t border-gray-300 bg-white'>
       <Link to="/app" Icon={HomeIcon} end />
       <Link to="/app/search" Icon={SearchIcon} />
       <Link to="/app/inbox" Icon={ChatAltIcon} />

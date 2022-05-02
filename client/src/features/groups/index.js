@@ -1,1 +1,1 @@
-export * from './Groups';
+export * from './components/Groups';
