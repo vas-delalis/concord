@@ -12,7 +12,7 @@ export const Home = () => {
 
   return (
     <>
-      <ActivitySearch isOpen={isOpen} close={close} />
+      {isOpen && (<ActivitySearch close={close} />)}
       <section className='flex flex-col items-center px-8 py-12 bg-gradient-to-r from-primary-500 to-violet-400'>
         <button
           onClick={open}

@@ -33,7 +33,7 @@ export const Groups = () => {
 
   return (
     <>
-      {isOpen && (<ActivitySearch isOpen={isOpen} close={close} />)}
+      {isOpen && (<ActivitySearch close={close} />)}
       <div className='bg-gradient-to-r from-primary-500 to-violet-400 text-white flex justify-between items-center px-4 py-7'>
         <Activity activities={filters.activities} openModal={open} />
         <Button variant='white' className='py-0.5 pl-3 pr-4'>
