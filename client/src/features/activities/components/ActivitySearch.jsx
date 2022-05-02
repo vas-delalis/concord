@@ -38,13 +38,14 @@ const ActivityList = ({ activities, toggleActivitySelect }) => (
 );
 
 export const ActivitySearch = ({ isOpen, close }) => {
+  const [filters, setFilters] = useOutletContext();
   const [searchQuery, setSearchQuery] = useState('');
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState(filters.activities);
   const { data } = useQuery(
     ['activities', searchQuery],
     () => getActivities(searchQuery)
   );
-  const [, setFilters] = useOutletContext();
+  
 
   useEffect(() => {
     // The intended behaviour is this:
@@ -96,7 +97,7 @@ export const ActivitySearch = ({ isOpen, close }) => {
     <Modal isOpen={isOpen} close={close}>
       <Search query={searchQuery} setQuery={setSearchQuery} />
       <Link
-        to='groups'
+        to='/app/groups'
         onClick={() => handleSubmit(false)}
         className={clsx(
           'bg-primary-200 flex items-center justify-between rounded',
