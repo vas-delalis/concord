@@ -46,9 +46,9 @@ export const ActivitySearch = ({ isOpen, close }) => {
   );
   const [, setFilters] = useOutletContext();
 
-  const setActivityFilter = () => {
+  const setActivityFilter = (useSelected = true) => {
     setFilters({
-      activities: activities.filter(activity => activity.selected)
+      activities: useSelected ? activities.filter(activity => activity.selected) : []
     });
   };
 
@@ -96,6 +96,7 @@ export const ActivitySearch = ({ isOpen, close }) => {
       <Search query={searchQuery} setQuery={setSearchQuery} />
       <Link
         to='groups'
+        onClick={() => setActivityFilter(false)}
         className={clsx(
           'bg-primary-200 flex items-center justify-between rounded',
           'font-medium p-2 pl-4 text-primary-900 text-base'
