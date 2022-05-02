@@ -5,14 +5,14 @@ import {
 import { Link } from 'react-router-dom';
 import { useDisclosure } from 'hooks/useDisclosure';
 import { Button } from 'components/elements';
-import { ActivitySearch } from 'features/activities';
+import { ActivitySelect } from 'features/activities';
 
 export const Home = () => {
   const { open, close, isOpen } = useDisclosure();
 
   return (
     <>
-      {isOpen && (<ActivitySearch close={close} />)}
+      {isOpen && (<ActivitySelect close={close} />)}
       <section className='flex flex-col items-center px-8 py-12 bg-gradient-to-r from-primary-500 to-violet-400'>
         <button
           onClick={open}

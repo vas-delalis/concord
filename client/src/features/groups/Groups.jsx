@@ -2,7 +2,7 @@ import { useOutletContext } from 'react-router-dom';
 import { PlusSmIcon, ChevronDownIcon } from '@heroicons/react/solid';
 import { Button } from 'components/elements';
 import { useDisclosure } from 'hooks/useDisclosure';
-import { ActivitySearch } from 'features/activities';
+import { ActivitySelect } from 'features/activities';
 
 function formatActivityNames(names) {
   switch (names.length) {
@@ -33,7 +33,7 @@ export const Groups = () => {
 
   return (
     <>
-      {isOpen && (<ActivitySearch close={close} />)}
+      {isOpen && (<ActivitySelect close={close} />)}
       <div className='bg-gradient-to-r from-primary-500 to-violet-400 text-white flex justify-between items-center px-4 py-7'>
         <Activity activities={filters.activities} openModal={open} />
         <Button variant='white' className='py-0.5 pl-3 pr-4'>

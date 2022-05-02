@@ -37,7 +37,7 @@ const ActivityList = ({ activities, toggleActivitySelect }) => (
   </ul>
 );
 
-export const ActivitySearch = ({ isOpen, close }) => {
+export const ActivitySelect = ({ isOpen, close }) => {
   const [filters, setFilters] = useOutletContext();
   const [searchQuery, setSearchQuery] = useState('');
   const [activities, setActivities] = useState(filters.activities);

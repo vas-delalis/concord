@@ -1,1 +1,1 @@
-export * from './components/ActivitySearch';
+export * from './components/ActivitySelect';
