@@ -46,12 +46,6 @@ export const ActivitySearch = ({ isOpen, close }) => {
   );
   const [, setFilters] = useOutletContext();
 
-  const setActivityFilter = (useSelected = true) => {
-    setFilters({
-      activities: useSelected ? activities.filter(activity => activity.selected) : []
-    });
-  };
-
   useEffect(() => {
     // The intended behaviour is this:
     // When an activity is selected, it stays where it is. However, when the search query is then changed,
@@ -84,11 +78,18 @@ export const ActivitySearch = ({ isOpen, close }) => {
   const toggleActivitySelect = (id) => {
     setActivities(oldActivities => 
       oldActivities.map(activity => 
-        activity.id === id ? 
-        { ...activity, selected: !activity.selected } :
-        activity
+        activity.id === id
+          ? { ...activity, selected: !activity.selected }
+          : activity
       )
     );
+  };
+
+  const handleSubmit = (useSelected = true) => { 
+    setFilters({ // Set activities in Outlet context
+      activities: useSelected ? activities.filter(activity => activity.selected) : []
+    });
+    close(); // Close modal
   };
 
   return (
@@ -96,7 +97,7 @@ export const ActivitySearch = ({ isOpen, close }) => {
       <Search query={searchQuery} setQuery={setSearchQuery} />
       <Link
         to='groups'
-        onClick={() => setActivityFilter(false)}
+        onClick={() => handleSubmit(false)}
         className={clsx(
           'bg-primary-200 flex items-center justify-between rounded',
           'font-medium p-2 pl-4 text-primary-900 text-base'
@@ -106,7 +107,7 @@ export const ActivitySearch = ({ isOpen, close }) => {
         <ChevronRightIcon className='h-7' />
       </Link>
       <ActivityList activities={activities} toggleActivitySelect={toggleActivitySelect} />
-      <Link to='groups' onClick={setActivityFilter}>
+      <Link to='/app/groups' onClick={handleSubmit}>
         <Button
           variant="primary"
           size="full" 
