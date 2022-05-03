@@ -1,10 +1,20 @@
-export const Modal = ({ close, children }) => (
-  <div
+import { useEffect } from "react";
+
+export const Modal = ({ close, children }) => {
+  // Prevent background scrolling while modal is open
+  useEffect(() => {
+    document.body.style.overflowY = 'hidden';
+    return () => {
+      document.body.style.overflowY = 'auto';
+    }
+  }, []);
+
+  return (<div
     onClick={close}
-    className='flex absolute z-50 items-center justify-center w-full min-h-full bg-gray-900/60 p-4'
+    className='fixed flex z-50 items-center justify-center inset-0 bg-gray-900/60 p-4'
   >
     <div onClick={e => { e.stopPropagation() }} className='bg-white rounded p-4 shadow-xl w-full'>
       { children }
     </div>
-  </div>
-)
+  </div>)
+}
