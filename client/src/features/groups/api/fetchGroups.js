@@ -8,7 +8,7 @@ export const fetchGroups = async ({ activities }) => {
     { id: 5, activityName: 'Counter-Strike: Global Offensive', title: 'Tryhards only', freeSlots: 4, totalSlots: 5 },
     { id: 6, activityName: 'Counter-Strike: Global Offensive', title: 'παμε', freeSlots: 1, totalSlots: 5 },
     { id: 7, activityName: 'League of Legends', title: 'League of Legends group', freeSlots: 1, totalSlots: 2 },
-    { id: 8, activityName: 'VALORANT', title: 'VALORANT Group', freeSlots: 1, totalSlots: 2 },
+    { id: 8, activityName: 'VALORANT', title: 'VALORANT group', freeSlots: 1, totalSlots: 2 },
     { id: 9, activityName: 'VALORANT', title: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', freeSlots: 1, totalSlots: 2 },
   ];
 

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { fetchGroups } from '../api/fetchGroups';
 
@@ -30,11 +31,19 @@ const Group = ({ group }) => (
   </article>
 );
 
-export const GroupList = ({ filters }) => {
+export const GroupList = ({ filters, setOpenings }) => {
   const { data } = useQuery(
     ['activities', filters],
     () => fetchGroups(filters)
   );
+
+  useEffect(() => {
+    if (!data) {
+      return
+    }
+    setOpenings(data.map(group => group.freeSlots).reduce((p, c) => p + c));
+  }, [data, setOpenings]);
+
 
   if (!data?.length) {
     return (
