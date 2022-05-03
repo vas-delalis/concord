@@ -30,8 +30,8 @@ const Info = ({ group }) => {
 };
 
 const Slots = ({ freeSlots, totalSlots }) => (
-  <div className='flex items-baseline whitespace-nowrap ml-8 text-gray-500'>
-    <span className='font-medium'>{totalSlots - freeSlots}</span>
+  <div className='flex items-baseline whitespace-nowrap ml-8 text-gray-600'>
+    <span>{totalSlots - freeSlots}</span>
     <span className='mx-0.5'>/</span>
     <span>{totalSlots}</span>
   </div>
