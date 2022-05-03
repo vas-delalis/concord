@@ -21,7 +21,7 @@ const Info = ({ group }) => {
       <div className='text-gray-900 [overflow-wrap:anywhere]'>{group.title}</div>
       <div className='flex items-center space-x-1 overflow-hidden'>
         {group.activityAttributes.voiceChat && <MdMic size='20px' className='text-gray-400' />}
-        <div className='text-gray-500 text-sm whitespace-nowrap truncate'>
+        <div className='text-gray-600 text-sm whitespace-nowrap truncate'>
           {tagString}
         </div>
       </div>
@@ -38,13 +38,13 @@ const Slots = ({ freeSlots, totalSlots }) => (
 );
 
 const Group = ({ group }) => (
-  <article className='p-6 flex items-center justify-between'>
+  <li className='p-6 flex items-center justify-between'>
     <div className='flex items-center'>
       <Avatar groupId={group.id} ownerAvatar={group.ownerAvatar} />
       <Info group={group} />
     </div>
     <Slots freeSlots={group.freeSlots} totalSlots={group.totalSlots} />
-  </article>
+  </li>
 );
 
 export const GroupList = ({ filters, setOpenings }) => {
