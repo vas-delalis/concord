@@ -1,3 +1,3 @@
 export const Landing = () => (
-  <div>Landing page</div>
+  <a href="app">Link to app</a>
 );
