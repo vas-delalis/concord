@@ -47,7 +47,7 @@ export const GroupList = ({ filters, setOpenings }) => {
 
   if (!data?.length) {
     return (
-      <span>No groups found</span>
+      <div className='text-center w-full py-8'>No groups found. Create your own!</div>
     )
   }
 
