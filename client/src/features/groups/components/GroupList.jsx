@@ -41,7 +41,7 @@ export const GroupList = ({ filters, setOpenings }) => {
     if (!data) {
       return
     }
-    setOpenings(data.map(group => group.freeSlots).reduce((p, c) => p + c));
+    setOpenings(data.map(group => group.freeSlots).reduce((p, c) => p + c, 0));
   }, [data, setOpenings]);
 
 

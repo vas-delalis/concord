@@ -26,7 +26,7 @@ const Activity = ({ openings, activities, openModal }) => (
       <ChevronDownIcon className='h-5 mt-1.5 flex-none' />
     </div>
     <span className='text-[#cfccff]'>
-      {`${openings} ${openings > 1 ? 'openings' : 'opening'}`}
+      {`${openings} ${openings === 1 ? 'opening' : 'openings'}`}
     </span>
   </button>
 );
