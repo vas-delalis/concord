@@ -1,5 +1,5 @@
 export const getActivities = async (query) => {
-  const activities = [
+  const activities = [ // TODO: add group count
     { id: 0, name: 'Overwatch' },
     { id: 1, name: 'Counter-Strike: Global Offensive' },
     { id: 2, name: 'League of Legends' },
