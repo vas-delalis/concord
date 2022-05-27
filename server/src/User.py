@@ -8,32 +8,32 @@ class User:
     attributes: list
     activities: list
 
-    def getLastGroup(self):
+    def get_last_group(self):
         return
 
-    def getHistory(self):
+    def get_history(self):
         return
 
-    def getAttributes(self):
+    def get_attributes(self):
         return
 
-    def getActivities(self):
+    def get_activities(self):
         return
 
-    def increaseReputation(self, amount: int):
+    def increase_reputation(self, amount: int) -> None:
+        ...
+
+    def is_logged_in(self) -> bool:
+        ...
+
+    def update_user_data(self):
         return
 
-    def isLoggedIn(self):
+    def check_requirements(self):
         return
 
-    def updateUserData(self):
+    def send_friend_request(self):
         return
 
-    def checkRequirements(self):
-        return
-
-    def sendFriendRequest(self):
-        return
-
-    def addFriend(self):
+    def add_friend(self):
         return

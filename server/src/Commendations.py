@@ -11,5 +11,5 @@ class Commendations:
     def commend(self, commender: User, recipient: User, datetime: datetime):
         return
 
-    def commendation_exists(self, commender: User, recipient: User):
-        return
+    def commendation_exists(self, commender: User, recipient: User) -> bool:
+        ...
