@@ -1,4 +1,3 @@
-from Group import Group
 from Attribute import Attribute
 from Activity import Activity
 
@@ -10,7 +9,7 @@ class User:
     def __init__(self, username: str):
         self.username: str = username
         self._reputation: int = 0
-        self._history: list[Group]
+        self._history: list["Group"]
         self._attributes: list[Attribute]
         self._activities: list[Activity]
 
