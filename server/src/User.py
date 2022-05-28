@@ -1,12 +1,18 @@
-from typing import Any
+from Group import Group
+from Attribute import Attribute
+from Activity import Activity
 
 
 class User:
-    username: str
-    reputation: int
-    history: Any
     attributes: list
     activities: list
+
+    def __init__(self, username: str):
+        self.username: str = username
+        self._reputation: int = 0
+        self._history: list[Group]
+        self._attributes: list[Attribute]
+        self._activities: list[Activity]
 
     def get_last_group(self):
         return
