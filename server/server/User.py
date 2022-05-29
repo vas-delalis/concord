@@ -1,5 +1,5 @@
-from Attribute import Attribute
-from Activity import Activity
+from .Attribute import Attribute
+from .Activity import Activity
 
 
 class User:

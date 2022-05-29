@@ -1,3 +1,0 @@
-class Dialogue:
-    def show(self):
-        ...

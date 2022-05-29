@@ -1,6 +1,6 @@
-from Activity import Activity
-from User import User
-from Attribute import Attribute
+from .Activity import Activity
+from .User import User
+from .Attribute import Attribute
 
 
 class Group:
@@ -9,21 +9,30 @@ class Group:
     _next_id: int = 0
 
     # "str | None" is called a union type and it means "string, but optional"
-    # TODO: create an Enum for languages and use it as a type here
     def __init__(
-        self, activity: Activity, owner: User, title: str, language: str | None = None
+        self,
+        activity: Activity,
+        owner: User,
+        title: str,
+        max_members: int | None = None,
+        language: str
+        | None = None,  # TODO: create an Enum for languages and use it as a type here
     ):
         # Instance fields (unique to each instance)
         self.id: int = Group._next_id
-        Group._next_id += 1
-        self.activity: Activity = activity
+        self.max_members: int = max_members
+        self.title: str = title
+        self.language = language
+        self._activity: Activity = activity
         self._owner: User = owner
         self._members: list[User] = [owner]
         self._moderators: list[User] = []
-        self.title: str = title
         self._is_complete: bool = False
         self._attributes: list[Attribute]
-        self.language = language
+        Group._next_id += 1
+
+    def get_activity(self) -> Activity:
+        return self._activity
 
     def mark_as_complete(self) -> None:
         # Do other things, e.g. trigger commend notification
