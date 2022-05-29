@@ -1,7 +1,7 @@
 from typing import Literal
-from .ActivityList import ActivityList
-from .Group import Group
-from .User import User
+from server.ActivityList import ActivityList
+from server.Group import Group
+from server.User import User
 
 
 activities = ActivityList().get_all()  # Remove this when we have a database

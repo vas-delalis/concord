@@ -1,6 +1,6 @@
-from .Activity import Activity
-from .User import User
-from .Attribute import Attribute
+from server.Activity import Activity
+from server.User import User
+from server.Attribute import Attribute
 
 
 class Group:

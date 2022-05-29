@@ -1,5 +1,5 @@
 from datetime import datetime
-from User import User
+from server.User import User
 
 
 class Commendations:

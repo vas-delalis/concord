@@ -1,4 +1,4 @@
-from .Activity import Activity
+from server.Activity import Activity
 
 
 class ActivityList:
