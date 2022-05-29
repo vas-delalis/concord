@@ -3,10 +3,10 @@ from server.Activity import Activity
 
 class ActivityList:
     _activities: list[Activity] = [
-        Activity("Call of Duty: Warzone", alias="COD"),
-        Activity("Counter-Strike: Global Offensive", alias="CSGO"),
-        Activity("Dota 2"),
-        Activity("League of Legends", alias="LoL"),
+        Activity("Call of Duty: Warzone", alias="COD", type="Video Game"),
+        Activity("Counter-Strike: Global Offensive", alias="CSGO", type="Video Game"),
+        Activity("Dota 2", type="Video Game"),
+        Activity("League of Legends", alias="LoL", type="Video Game"),
     ]
 
     def get(self, activity_id: int) -> Activity:
