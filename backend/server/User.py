@@ -30,7 +30,7 @@ class User:
         return
 
     def increase_reputation(self, amount: int) -> None:
-        ...
+        self._reputation += amount
 
     def is_logged_in(self) -> bool:
         ...
