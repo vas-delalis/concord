@@ -43,7 +43,7 @@ class Group:
         self._members.append(user)
 
     def get_attributes(self) -> list[Attribute]:
-        return self._activity._attributes
+        return self._activity._attributes.copy()
 
     def add_attribute(self, attribute: Attribute) -> None:
         self._activity._attributes.append(attribute)
@@ -59,4 +59,4 @@ class Group:
             
 
     def get_members(self) -> list[User]:
-        return self._members
+        return self._members.copy()
