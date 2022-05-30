@@ -1,3 +1,4 @@
+import string
 from server.Activity import Activity
 from server.User import User
 from server.Attribute import Attribute
@@ -47,8 +48,15 @@ class Group:
     def add_attribute(self, attribute: Attribute) -> None:
         self._activity._attributes.append(attribute)
 
-    def remove_attribute(self, attribute: Attribute):
-        return
+    def remove_attribute(self, attribute: Attribute) -> None:
+        try:
+            # This will definately need to be reworked
+            # After we talk about attributes
+            self._activity._attributes.remove(attribute)
+        except ValueError as e:
+            # Swap with appropriate dialogue window when implemented
+            print(e)
+            
 
     def get_members(self) -> list[User]:
         return self._members
