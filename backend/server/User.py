@@ -2,7 +2,7 @@ from server.Attribute import Attribute
 from server.Activity import Activity
 from server.Group import Group
 from datetime import datetime
-
+import string
 
 class User:
     attributes: list
@@ -23,11 +23,11 @@ class User:
     def get_history(self):
         return
 
-    def get_attributes(self):
-        return
+    def get_attributes(self) -> list[Attribute]:
+        return self._attributes.copy()
 
-    def get_activities(self):
-        return
+    def get_activities(self) -> list[Activity]:
+        return self._activities.copy()
 
     def increase_reputation(self, amount: int) -> None:
         self._reputation += amount
