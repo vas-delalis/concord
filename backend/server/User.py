@@ -1,5 +1,6 @@
 from server.Attribute import Attribute
 from server.Activity import Activity
+from server.Group import Group
 
 
 class User:
