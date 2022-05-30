@@ -42,7 +42,7 @@ class Group:
         self._members.append(user)
 
     def get_attributes(self):
-        return
+        return self._activity._attributes
 
     def add_attribute(self, attribute: Attribute):
         return
