@@ -1,4 +1,3 @@
-import string
 from server.Activity import Activity
 from server.User import User
 from server.Attribute import Attribute
