@@ -41,11 +41,11 @@ class Group:
     def add_member(self, user: User) -> None:
         self._members.append(user)
 
-    def get_attributes(self):
+    def get_attributes(self) -> list[Attribute]:
         return self._activity._attributes
 
-    def add_attribute(self, attribute: Attribute):
-        return
+    def add_attribute(self, attribute: Attribute) -> None:
+        self._activity._attributes.append(attribute)
 
     def remove_attribute(self, attribute: Attribute):
         return
