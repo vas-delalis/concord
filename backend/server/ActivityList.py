@@ -7,12 +7,13 @@ class ActivityList:
         Activity("Counter-Strike: Global Offensive", attributes=None, alias="CSGO", type="Video Games"),
         Activity("Dota 2", attributes=None, type="Video Games"),
         Activity("League of Legends", attributes=None, alias="LoL", type="Video Games"),
+        Activity("Overwatch", attributes=None, alias="OW", type="Video Games"),
         # Not sure about the wording, feel free to alter it
         Activity("Football", attributes=None, type="Team Sports"),
         Activity("Basketball", attributes=None, type="Team Sports"),
         Activity("Movie Viewing", attributes=None, type="Cultural Event"),
         Activity("Concert Attendance", attributes=None, type="Cultural Event"),
-        Activity("Dungeons and Dragons", attributes=None, type="Board Games"),
+        Activity("Dungeons and Dragons", attributes=None, alias="DnD", type="Board Games"),
         Activity("Mountain Biking", attributes=None, type="Extreme Sports"),
         Activity("Studying", attributes=None, type="Quiet Activities"),
         # The infamous "Custom Activity"
