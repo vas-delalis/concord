@@ -1,18 +1,20 @@
 from server.Attribute import Attribute
 from server.Activity import Activity
 from server.Group import Group
+from datetime import datetime
 
 
 class User:
     attributes: list
     activities: list
 
-    def __init__(self, username: str):
+    def __init__(self, username: str, birthday: datetime):
         self.username: str = username
         self._reputation: int = 0
-        self._history: list["Group"]
-        self._attributes: list[Attribute]
-        self._activities: list[Activity]
+        self._birthday = birthday
+        self._history: list[Group] = []
+        self._attributes: list[Attribute] = []
+        self._activities: list[Activity] = []
 
     def get_last_group(self):
         return
