@@ -1,4 +1,6 @@
 from server.Attribute import Attribute
+
+
 class AttributeList:
     class ActivityList:
         _attributes: list[Attribute] = [

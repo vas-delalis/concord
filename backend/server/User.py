@@ -2,7 +2,7 @@ from server.Attribute import Attribute
 from server.Activity import Activity
 from server.Group import Group
 from datetime import datetime
-import string
+
 
 class User:
     attributes: list
@@ -15,7 +15,6 @@ class User:
         self._history: list[Group] = []
         self._attributes: list[Attribute] = []
         self._activities: list[Activity] = []
-        self._commended_by: list[User] = []
 
     def get_last_group(self):
         return

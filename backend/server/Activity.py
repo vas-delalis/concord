@@ -1,4 +1,6 @@
 from server.Attribute import Attribute
+
+
 class Activity:
     _next_id: int = 0
 
