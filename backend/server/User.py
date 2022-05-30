@@ -15,6 +15,7 @@ class User:
         self._history: list[Group] = []
         self._attributes: list[Attribute] = []
         self._activities: list[Activity] = []
+        self._commended_by: list[User] = []
 
     def get_last_group(self):
         return
