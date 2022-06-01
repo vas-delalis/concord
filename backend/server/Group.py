@@ -1,6 +1,16 @@
+from typing import TypedDict
 from server.Activity import Activity
 from server.User import User
-from server.Attribute import Attribute
+
+
+class RequirementsDict(TypedDict):
+    fee: float
+    min_age: str | None
+    max_age: str | None
+    genders: str | None
+    experience: str | None
+    equipment: str | None
+    language: str | None
 
 
 class Group:
@@ -14,21 +24,19 @@ class Group:
         activity: Activity,
         owner: User,
         title: str,
+        requirements: RequirementsDict,
         max_members: int | None = None,
-        language: str
-        | None = None,  # TODO: create an Enum for languages and use it as a type here
     ):
         # Instance fields (unique to each instance)
         self.id: int = Group._next_id
-        self.max_members: int = max_members
-        self.title: str = title
-        self.language = language
-        self._activity: Activity = activity
         self._owner: User = owner
         self._members: list[User] = [owner]
         self._moderators: list[User] = []
+        self.title: str = title
+        self.max_members: int = max_members
+        self._activity: Activity = activity
         self._is_complete: bool = False
-        self._attributes: list[Attribute]
+        self._requirements: RequirementsDict = requirements
         Group._next_id += 1
 
     def get_activity(self) -> Activity:
@@ -40,22 +48,6 @@ class Group:
 
     def add_member(self, user: User) -> None:
         self._members.append(user)
-
-    def get_attributes(self) -> list[Attribute]:
-        return self._activity._attributes.copy()
-
-    def add_attribute(self, attribute: Attribute) -> None:
-        self._activity._attributes.append(attribute)
-
-    def remove_attribute(self, attribute: Attribute) -> None:
-        try:
-            # This will definately need to be reworked
-            # After we talk about attributes
-            self._activity._attributes.remove(attribute)
-        except ValueError as e:
-            # Swap with appropriate dialogue window when implemented
-            print(e)
-            
 
     def get_members(self) -> list[User]:
         return self._members.copy()
