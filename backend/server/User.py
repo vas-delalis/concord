@@ -1,4 +1,3 @@
-from server.Attribute import Attribute
 from server.Activity import Activity
 from datetime import datetime
 
@@ -12,7 +11,6 @@ class User:
         self._reputation: int = 0
         self._birthday: datetime
         self._history: list["Group"] = []
-        self._attributes: list[Attribute] = []
         self._activities: list[Activity] = []
 
     def get_last_group(self):
@@ -20,9 +18,6 @@ class User:
 
     def get_history(self):
         return
-
-    def get_attributes(self) -> list[Attribute]:
-        return self._attributes.copy()
 
     def get_activities(self) -> list[Activity]:
         return self._activities.copy()

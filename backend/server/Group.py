@@ -49,5 +49,14 @@ class Group:
     def add_member(self, user: User) -> None:
         self._members.append(user)
 
+    def remove_member(self, user: User) -> None:
+        self._members.remove(user)
+
     def get_members(self) -> list[User]:
         return self._members.copy()
+
+    def get_details(self) -> dict:
+        ...
+
+    def user_can_join(self, user: User) -> bool:
+        ...  # Check if user attributes match group requirements
