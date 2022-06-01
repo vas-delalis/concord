@@ -50,7 +50,7 @@ class Requirements:
     def check(self, attributes: dict[str, Any]) -> bool:
         """Return True if every attribute in `attributes` passes validation."""
         for name in attributes:
-            # Could be done with a list comprehension, but this one short-circuits
+            # Could be done with a list comprehension, but this version short-circuits
             value = attributes[name]
             if not self._validators[name](value):
                 return False

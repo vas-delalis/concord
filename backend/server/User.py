@@ -10,7 +10,7 @@ class User:
     def __init__(self, username: str):
         self.username: str = username
         self._reputation: int = 0
-        self._birthday: datetime = None
+        self._birthday: datetime
         self._history: list["Group"] = []
         self._attributes: list[Attribute] = []
         self._activities: list[Activity] = []
