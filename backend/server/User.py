@@ -1,17 +1,16 @@
-from server.Activity import Activity
+from typing import Literal
 from datetime import datetime
+from server.Activity import Activity
 
 
 class User:
-    attributes: list
-    activities: list
-
-    def __init__(self, username: str):
+    def __init__(self, username: str, birthday: datetime, gender: Literal['Male', 'Female', 'Other']):
         self.username: str = username
         self._reputation: int = 0
-        self._birthday: datetime
+        self._birthday: datetime = birthday
         self._history: list["Group"] = []
         self._activities: list[Activity] = []
+        self._gender: Literal['Male', 'Female', 'Other'] = gender
 
     def get_last_group(self):
         return
