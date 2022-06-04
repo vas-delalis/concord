@@ -16,11 +16,11 @@ def get_user_by_id(cursor: sqlite3.Cursor, uid: int) -> User:
         usr = User(username=data[1].replace("'",''), birthday=datetime.strptime(data[5].replace("'",''), "%Y-%m-%d"), gender= data[7].replace("'",''))
         return usr
     except sqlite3.IntegrityError:
-        print("Oh fuck")
+        print("Error while attempting to get user from DB")
 
-
-
-
-cock = concordConnect()
-cock[1].execute('INSERT INTO USER VALUES (69, "cockman", "cock@man.kz", "Man", "Cock", "2000-06-29", "abnaroz", "Other")')
-get_user_by_id(cock[1], 69)
+def add_new_user(cursor: sqlite3.Cursor, usr: User, fname: str, sname: str, email: str, pwd: str) -> None:
+    try:
+        t = (usr.username, fname, sname, email, usr.birthday, pwd, usr.gender, usr.reputation,)
+        cursor.execute("INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?, ?, ?)", t)
+    except sqlite3.IntegrityError:
+        print("Error while attempting to insert user to DB")
