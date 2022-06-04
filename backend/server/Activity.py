@@ -1,7 +1,9 @@
+from typing import Optional
+
 class Activity:
     _next_id: int = 0
-
-    def __init__(self, name: str, type: str, alias: str | None = None):
+    # Pydantic refuses to work with str | None = None (known issue)
+    def __init__(self, name: str, type: str, alias: Optional[str] = None):
         self.id = Activity._next_id
         Activity._next_id += 1
         self.name = name
