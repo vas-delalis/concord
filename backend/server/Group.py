@@ -1,4 +1,5 @@
 from typing import TypedDict
+from xmlrpc.client import boolean
 from server.Activity import Activity
 from server.User import User
 
@@ -38,6 +39,31 @@ class Group:
         self._is_complete: bool = False
         self._requirements: RequirementsDict = requirements
         Group._next_id += 1
+
+    @property
+    def owner(self) -> User:
+        return self._owner
+
+    @property
+    def members(self) -> list[User]:
+        return self._members
+
+    @property
+    def moderators(self) -> list[User]:
+        return self._moderators
+
+    @property
+    def activity(self) -> Activity:
+        return self._activity
+    
+    @property
+    def is_complete(self) -> boolean:
+        return self._is_complete
+
+    @property
+    def requirements(self) -> RequirementsDict:
+        return self._requirements
+
 
     def get_activity(self) -> Activity:
         return self._activity

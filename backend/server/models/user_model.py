@@ -3,7 +3,6 @@ import sys
 import os
 sys.path.append(os.path.join(sys.path[0], '../../'))
 from server.User import User
-from server.database.connection import concordConnect
 from datetime import datetime
 
 

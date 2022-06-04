@@ -1,5 +1,6 @@
 from typing import Literal
 from datetime import datetime
+from backend.server.Group import Group
 from server.Activity import Activity
 
 
@@ -13,23 +14,23 @@ class User:
         self._gender: Literal['Male', 'Female', 'Other'] = gender
 
     @property
-    def reputation(self):
+    def reputation(self) -> int:
         return self._reputation
 
     @property
-    def birthday(self):
+    def birthday(self) -> datetime:
         return self._birthday
 
     @property
-    def history(self):
+    def history(self) -> list["Group"]:
         return self._history
 
     @property
-    def activities(self):
+    def activities(self) -> list[Activity]:
         return self._activities
 
     @property
-    def gender(self):
+    def gender(self) -> str:
         return self._gender
 
     def get_last_group(self):
