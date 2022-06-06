@@ -1,4 +1,6 @@
+from datetime import datetime
 from pydantic import BaseModel
+from typing import Literal
 
 
 class Activity(BaseModel):
@@ -27,3 +29,21 @@ class Group(BaseModel):
         orm_mode = True
         allow_population_by_field_name = True
         alias_generator = group_alias
+
+
+class UserBase(BaseModel):
+    username: str
+    email: str
+    birthday: datetime
+    reputation: int
+
+    class Config:
+        orm_mode = True
+
+
+class User(UserBase):
+    real_name: str | None
+    password: str
+    gender: Literal["Male", "Female", "Other"]
+    reputation: int
+

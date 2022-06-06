@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from server.ActivityList import ActivityList
 from server.GroupList import GroupList
-import server.api.schemas as schemas
+from server.User import User
+from server import schemas
 
 app = FastAPI()
 
@@ -9,6 +10,18 @@ app = FastAPI()
 @app.get("/")
 async def root():
     return {"message": "Hello world"}
+
+
+@app.get("/users/{username}", response_model=schemas.UserBase)
+async def get_users(username: str):
+    return User.from_username(username)
+
+
+@app.post("/users/{username}", status_code=200)
+async def test(username: str):
+    user = User.from_username(username)
+    user.increase_reputation(1)
+    user.save()
 
 
 @app.get("/activities")
