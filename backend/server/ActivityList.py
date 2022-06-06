@@ -3,21 +3,23 @@ from server.Activity import Activity
 
 class ActivityList:
     _activities: list[Activity] = [
-        Activity("Call of Duty: Warzone", attributes=None , alias="COD", type="Video Games"),
-        Activity("Counter-Strike: Global Offensive", attributes=None, alias="CSGO", type="Video Games"),
-        Activity("Dota 2", attributes=None, type="Video Games"),
-        Activity("League of Legends", attributes=None, alias="LoL", type="Video Games"),
-        Activity("Overwatch", attributes=None, alias="OW", type="Video Games"),
+        Activity("Call of Duty: Warzone", alias="COD", category="Video Games"),
+        Activity(
+            "Counter-Strike: Global Offensive", alias="CSGO", category="Video Games"
+        ),
+        Activity("Dota 2", category="Video Games"),
+        Activity("League of Legends", alias="LoL", category="Video Games"),
+        Activity("Overwatch", alias="OW", category="Video Games"),
         # Not sure about the wording, feel free to alter it
-        Activity("Football", attributes=None, type="Team Sports"),
-        Activity("Basketball", attributes=None, type="Team Sports"),
-        Activity("Movie Viewing", attributes=None, type="Cultural Event"),
-        Activity("Concert Attendance", attributes=None, type="Cultural Event"),
-        Activity("Dungeons and Dragons", attributes=None, alias="DnD", type="Board Games"),
-        Activity("Mountain Biking", attributes=None, type="Extreme Sports"),
-        Activity("Studying", attributes=None, type="Quiet Activities"),
+        Activity("Football", category="Team Sports"),
+        Activity("Basketball", category="Team Sports"),
+        Activity("Movie Viewing", category="Cultural Event"),
+        Activity("Concert Attendance", category="Cultural Event"),
+        Activity("Dungeons and Dragons", alias="DnD", category="Board Games"),
+        Activity("Mountain Biking", category="Extreme Sports"),
+        Activity("Studying", category="Quiet Activities"),
         # The infamous "Custom Activity"
-        Activity("Other", attributes=None, type="Unspecified")
+        Activity("Other", category="Unspecified"),
     ]
 
     def get(self, activity_id: int) -> Activity:
