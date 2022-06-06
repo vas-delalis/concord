@@ -1,7 +1,10 @@
-from typing import Literal
+from __future__ import annotations
+from typing import Literal, TYPE_CHECKING
 from datetime import datetime
-from backend.server.Group import Group
 from server.Activity import Activity
+
+if TYPE_CHECKING:
+    from server.Group import Group
 
 
 class User:
@@ -9,7 +12,7 @@ class User:
         self.username: str = username
         self._reputation: int = 0
         self._birthday: datetime = birthday
-        self._history: list["Group"] = []
+        self._history: list[Group] = []
         self._activities: list[Activity] = []
         self._gender: Literal['Male', 'Female', 'Other'] = gender
 
@@ -22,7 +25,7 @@ class User:
         return self._birthday
 
     @property
-    def history(self) -> list["Group"]:
+    def history(self) -> list[Group]:
         return self._history
 
     @property
@@ -32,9 +35,6 @@ class User:
     @property
     def gender(self) -> str:
         return self._gender
-
-    def get_last_group(self):
-        return
 
     def get_history(self):
         return

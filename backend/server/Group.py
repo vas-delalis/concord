@@ -1,7 +1,9 @@
-from typing import TypedDict
-from xmlrpc.client import boolean
+from __future__ import annotations
+from typing import TypedDict, TYPE_CHECKING
 from server.Activity import Activity
-from server.User import User
+
+if TYPE_CHECKING:
+    from server.User import User
 
 
 class RequirementsDict(TypedDict):
@@ -57,13 +59,12 @@ class Group:
         return self._activity
     
     @property
-    def is_complete(self) -> boolean:
+    def is_complete(self) -> bool:
         return self._is_complete
 
     @property
     def requirements(self) -> RequirementsDict:
         return self._requirements
-
 
     def get_activity(self) -> Activity:
         return self._activity
