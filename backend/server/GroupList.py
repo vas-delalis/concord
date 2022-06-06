@@ -1,36 +1,9 @@
 from typing import Literal
-from server.ActivityList import ActivityList
 from server.Group import Group
-from server.User import User
-
-
-activities = ActivityList().get_all()  # Remove this when we have a database
 
 
 class GroupList:
-    _groups: list[Group] = [
-        Group(
-            activities[3],
-            User("user1"),
-            "Looking for mercy pocket [silver/gold]",
-            max_members=2,
-        ),
-        Group(
-            activities[2],
-            User("user2"),
-            "rank fr gold - mic 21+ comunication et bonne ambiance lets go",
-            max_members=6,
-            language="French",
-        ),
-        Group(activities[1], User("user3"), "PUGs Discord"),
-        Group(
-            activities[0],
-            User("user4"),
-            "Lassen Sie uns diese Noobs rollen",
-            max_members=5,
-            language="German",
-        ),
-    ]
+    _groups: list[Group]
 
     def __init__(self):
         pass
