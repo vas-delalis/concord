@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TypedDict, TYPE_CHECKING
+from typing import TypedDict, Literal, TYPE_CHECKING
 from server.Activity import Activity
 
 if TYPE_CHECKING:
@@ -20,6 +20,11 @@ class Group:
     # Fields starting with a _ are private.
     # Class field (shared between all instances)
     _next_id: int = 0
+    _groups = []  # TODO: Delete this, connect to DB instead
+
+    @classmethod
+    def get_active(cls, user_data, sort: Literal["recommended"] = "recommended"):
+        return cls._groups
 
     # "str | None" is called a union type and it means "string, but optional"
     def __init__(
@@ -84,6 +89,3 @@ class Group:
 
     def get_details(self) -> dict:
         ...
-
-    def user_can_join(self, user: User) -> bool:
-        ...  # Check if user attributes match group requirements

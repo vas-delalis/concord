@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from server.ActivityList import ActivityList
-from server.GroupList import GroupList
+from server.Activity import Activity
+from server.Group import Group
 from server.User import User
 from server import schemas
 
@@ -26,13 +26,13 @@ async def test(username: str):
 
 @app.get("/activities")
 async def get_activities():
-    print(ActivityList().get_all())
-    return ActivityList().get_all()
+    print(Activity.get_all())
+    return Activity.get_all()
 
 
 @app.get("/groups/", response_model=list[schemas.Group])
 async def get_groups():
-    groups = GroupList().get_active(None, "recommended")
+    groups = Group.get_active(None, "recommended")
     for group in groups:
         group.activity = group.get_activity()
         group.member_count = len(group.get_members())

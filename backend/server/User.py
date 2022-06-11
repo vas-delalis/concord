@@ -14,14 +14,15 @@ class User:
         return f"<User: {self._username}>"
 
     @classmethod
-    def from_username(cls, username: str):
+    def from_username(cls, username: str) -> "User":
+        """Look up a username in the DB and convert the result into a User instance."""
         cursor.execute("SELECT * FROM USER WHERE username = ?", (username,))
         user_dict: dict = cursor.fetchone()
         user_dict.update({"birthday": datetime.fromisoformat(user_dict["birthday"])})
         return cls(**user_dict)
 
     @classmethod
-    def from_friend_code(cls):
+    def from_friend_code(cls) -> "User":
         ...
 
     def __init__(
@@ -44,6 +45,22 @@ class User:
         self._reputation: int = reputation
         self._history: list[Group] = []
         self._activities: list[Activity] = []
+
+    def save(self):
+        """Save this User instance to DB."""
+        user_dict = schemas.User.from_orm(self).dict()
+        cursor.execute(
+            """
+            INSERT INTO user VALUES 
+                (:username, :email, :real_name, :birthday, :password, :gender, :reputation)
+            ON CONFLICT(username) DO UPDATE SET 
+                email = excluded.email, real_name = excluded.real_name, birthday = excluded.birthday,
+                password = excluded.password, gender = excluded.gender, reputation = excluded.reputation
+            """,
+            user_dict,
+        )
+
+        connection.commit()
 
     @property
     def username(self) -> str:
@@ -87,30 +104,11 @@ class User:
     def is_logged_in(self) -> bool:
         ...
 
-    def update_user_data(self):
-        return
-
-    def check_requirements(self):
-        return
+    def can_join(self, group: Group) -> bool:
+        ...  # Check if user attributes match group requirements
 
     def send_friend_request(self):
         return
 
     def add_friend(self):
         return
-
-    def save(self):
-        """Save this User instance to DB."""
-        user_dict = schemas.User.from_orm(self).dict()
-        cursor.execute(
-            """
-            INSERT INTO user VALUES 
-                (:username, :email, :real_name, :birthday, :password, :gender, :reputation)
-            ON CONFLICT(username) DO UPDATE SET 
-                email = excluded.email, real_name = excluded.real_name, birthday = excluded.birthday,
-                password = excluded.password, gender = excluded.gender, reputation = excluded.reputation
-            """,
-            user_dict,
-        )
-
-        connection.commit()
